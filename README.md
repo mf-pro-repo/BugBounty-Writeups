@@ -33,6 +33,10 @@ I don’t believe in "Spray and Pray." My research follows a deliberate, multi-s
   
   5: **Sanitization:** Cleaning all receipts, logs, and screenshots to ensure they meet the highest responsible disclosure standards and protect the target's identity.
 
+## Notes
+
+You may notice in a lot of my reports I utilize googles DNS `8.8.8.8` I do this because I run a tailscale system and it REALLY messes up my DNS queries over CLI for wheatever reason. I could fix it, but honestly it's easier just to pass googles DNS where it can take it, plus Foxhunt has configurable DNS...
+
 
 ## Disclaimer
 *This repository is for educational and authorized security testing purposes only. I do not condone or support unauthorized access to any systems. All findings reported here have been through the proper disclosure channels or were identified on public, properly scoped targets.*
