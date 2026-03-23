@@ -49,6 +49,17 @@ The UI was accessible at the standard path without any JWT or Session requiremen
 curl -s "https://[REDACTED]-test.azurewebsites.net/swagger/v1/swagger.json"
 ```
 
+## Tactical Impact
+
+| Endpoint | Data/Risk Category | Potential Impact |
+| :--- | :--- | :--- |
+| `/api/GetUserProfile` | **Employee PII** | Names, IDs, and Contact Info |
+| `/api/GetDirectReports/` | **Org Structure** | Managerial hierarchies and reporting lines |
+| `/api/dashboard/currentBudget`| **Financial Data** | Internal department budgets and allocations |
+| `/api/chat-gpt/query` | **Internal AI Leak** | Internal prompts, AI logic, and integration points |
+| `/api/cache/reset` | **Operational DoS** | Unauthorized cache manipulation |
+| `/api/departments/files` | **Sensitive Documents**| Internal file management and directory structures |
+
 ## Evidence
 
 (More screenshots I have to add, shut up I'm posting the writeups first.)
