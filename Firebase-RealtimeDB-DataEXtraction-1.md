@@ -30,6 +30,7 @@ The following data categories were successfully extracted without any authentica
   **Service Topology:** Identification of specific Firebase instances mapped to public-facing subdomains, allowing for further targeted reconnaissance.
 
 ## Discovery
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
 During Foxhunt's secretfinding phase, it discovered a firebase API key along with several firebase project endpoints. This was my attack vector.  
 It's not uncommon for companies to push these "cool" or "immersive" tools quickly because HR is all about putting stuff out as quickly as possible. Because of this, it's not uncommon to find misconfigurations like this.  
 
@@ -37,7 +38,7 @@ That's why I always poke and prod at firebase services when I can. I always try 
 
 In this case we had the endpoints from our endpoint discovery and had the API key from our secretfinder, so we had everything we needed.  
 
-## proof of Concept (PoC)
+## Proof of Concept (PoC)
 The vulnerability was identified by inspecting the client-side configuration objects initialized by the web application.
 
   **1. Configuration Discovery:**
