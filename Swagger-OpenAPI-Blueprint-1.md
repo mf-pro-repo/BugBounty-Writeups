@@ -2,11 +2,11 @@
 Vulnerability: Unauthenticated Swagger UI / OpenAPI Disclosure
 Target: Confidential (Internal Employee Portal / QA Backend)
 
-Status: [OPEN] / Under Investigation
+Status: Closed
 
 Classification: CWE-212 (Exposure of Sensitive Information)
 
-Triage Result: Pending Validation (Passed Preliminary Review)
+Triage Result: Duplicate
 
 ## Synopsis
 During reconnaissance of a QA-tier web asset, an unauthenticated Swagger UI instance was identified on a linked Azure-hosted test backend. The exposure provides a complete OpenAPI specification for the organization's internal employee portal API.
@@ -14,8 +14,10 @@ During reconnaissance of a QA-tier web asset, an unauthenticated Swagger UI inst
 This disclosure maps over 130+ internal endpoints, revealing sensitive administrative functions, employee PII routes, organizational structure logic, and internal AI (ChatGPT) integration schemas.
 
 ## Discovery & Methodology
-The Ideology: "Follow the Breadcrumbs"
-In a tiered environment (Dev -> QA -> Prod), the QA environment is often the weakest link. It usually contains "Production-lite" features but lacks the robust authentication middleware found in the live environment. My methodology focuses on extracting environmental variables and hardcoded URLs from these middle-tier assets to find "Shadow" infrastructure. I hate auth gates so I try to bypass them whenever I can.
+
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
+The Ideology: "Follow the Breadcrumbs"  
+In a tiered environment (Dev -> QA -> Prod), the QA environment can sometimes be a weak link. It usually contains "Production-lite" features but lacks the robust authentication middleware found in the live environment. My methodology focuses on extracting environmental variables and hardcoded URLs from these middle-tier assets to find "Shadow" infrastructure. I hate auth gates so I try to bypass them whenever I can.
 
 1. Endpoint Extraction (FoxHunt)
 The discovery began by parsing the JavaScript bundles of the QA environment (myapps-qa.*). I was looking specifically for URL patterns that deviated from the primary domain.
@@ -33,18 +35,18 @@ The discovery of `/swagger/v1/swagger.json` allowed for a complete reconstructio
 
 
 ## Proof of Concept (PoC)
-1. Discovering the Backend:
+1. Discovering the Backend:  
 The backend URL was extracted from a publicly served bundle on the QA site.
 ```bash
 # Reconstructing the discovery command
 grep -oP 'https://app-[REDACTED]-test[^"]*' bundle.js
 ```
 
-2. Accessing the UI:
+2. Accessing the UI:  
 The UI was accessible at the standard path without any JWT or Session requirement.
 `https://[REDACTED]-test.azurewebsites.net/swagger/index.html`
 
-3. Retrieving the Full Spec:
+3. Retrieving the Full Spec:  
 ```bash
 curl -s "https://[REDACTED]-test.azurewebsites.net/swagger/v1/swagger.json"
 ```
@@ -64,7 +66,7 @@ curl -s "https://[REDACTED]-test.azurewebsites.net/swagger/v1/swagger.json"
 
 (More screenshots I have to add, shut up I'm posting the writeups first.)
 
-## Remediation Recommendations
+## Remediation Recommendations  
 Environment-Aware Config: Use environment variables to strictly disable Swagger/OpenAPI middleware in non-development builds.
 
 Network Gating: Restrict access to test/QA backends via IP Whitelisting or VPN-only access.
