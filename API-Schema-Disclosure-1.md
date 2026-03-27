@@ -36,7 +36,8 @@ The leaked schema (spanning over 2,300 lines of definitions) enumerated several 
 
   **Data Handling Logic:** Defined structures for sensitive data categorization, confirming the platform's role in handling high-integrity information.  
 
-## Discovery
+## Discovery 
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
 During the JavaScript parsing phase of FoxHunt, this was not initially flagged by automation. It was identified through manual verification. (Automation is a force multiplier, but manual analysis is where the real bugs live.)
 
 My reconnaissance process involves pulling and parsing every JS file a target provides. These are gold mines for secrets, internal functionality, management schemes, and hidden endpoints.
