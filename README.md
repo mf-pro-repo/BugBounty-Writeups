@@ -4,7 +4,9 @@ Security Research & Bug Bounty Archive
 by nullf0x
 This repository is a collection of my independent security research, vulnerability findings, and custom reconnaissance tooling. I focus on infrastructure-level flaws, edge-case bypasses, and systemic misconfigurations in enterprise environments.
 
-## The Engine: Foxhunt (TODO: Upload foxhunt and add link)
+## The Engine: Foxhunt
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
+
 Most of the findings in this repo were identified using Foxhunt, my custom stateful reconnaissance pipeline. It’s designed to handle the "boring" parts of recon—persistence, scope validation, and data deduplication, so I can focus on the fun part of exploitation.
 
   **Logic-Driven:** Built-in alerts for internal IP leaks and high-value service identification.
