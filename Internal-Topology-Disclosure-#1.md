@@ -30,6 +30,7 @@ While this information is technically "post-infiltration" utility, it allows an 
 
 ## Discovery
 
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
 During basic recon of the target, subfinder found a series of domains. Doing my proper due diligence I ran dig on all of them to identify them properly.  
 This is when I discovered they were private IP addresses and were linked to various services throughout the company. This then became my attack vector.
 
