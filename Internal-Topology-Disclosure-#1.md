@@ -55,7 +55,7 @@ Overall 26 internal IP addresses were discovered spanning 24 different services.
 I was able to determine their prod subnet at 10.36.XXX.XXX and their training subnet at 172.16.XXX.XXX
 I even found one of their internal services was also mapped to an external IP and was publically accessable from anywhere on the internet. (Auth gated)  
 
-Mapped Infrastructure Includes:
+Mapped Infrastructure Includes:  
   **Security Tooling:** Internal Portswigger platform (Security Team infrastructure exposed).
 
   **Development & CI/CD:** TeamCity, GitHub Service, NIX Service.
