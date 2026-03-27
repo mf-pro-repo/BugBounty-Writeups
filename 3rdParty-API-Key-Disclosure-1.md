@@ -21,6 +21,8 @@ If this key is used for critical business logic—such as regional content gatin
 On the flipside, if it's a public, free, or open source system, a leaked API key cannot be used for any malicious purpose but does still go against security best practices. (This is relevant and explained in the "Takeaways" section.)
 
 ## Discovery & Methodology
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)
+
 The Ideology: "Static Analysis at Scale"
 My methodology assumes that the most vulnerable code isn't always the newest. Legacy scripts, often labeled main.js or common.js, frequently survive multiple development cycles without a security audit. These "forgotten" files are where hardcoded credentials go to hide.
 
