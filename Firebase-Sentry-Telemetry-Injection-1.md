@@ -40,6 +40,7 @@ By querying the Google Identity Toolkit with the leaked Firebase API Key, I extr
 
 ## Discovery
 
+[![FoxHunt](https://img.shields.io/badge/Tool-FoxHunt_v5.0-orange)](https://github.com/mf-pro-repo/Foxhunt)  
 During FoxHunt's JS endpoint discovery phase, the tool flagged `https://[SUBDOMAIN].[TARGET].com/config.js`.
 
 My standard methodology involves auditing any `config.*` files found during recon. While these are often sanitized, they are frequently overlooked during rapid deployment cycles. A simple curl request confirmed that the file was served as a static asset without any authentication requirement.
