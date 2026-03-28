@@ -6,11 +6,14 @@ Status: Closed / Sanitized
 
 Classification: CWE-200 (Information Exposure)
 
-Triage Result: Duplicate / Informative ***(Bullshit)***
+Triage Result: Duplicate
 
 ## Prelude  
 This one is going to be kind of hard and is going to be even more vague than usual.  
 Due to the sensativity of the information discovered and the companies service, a LOT has had to be sanitized and left vague but I'll do my best.  
+
+***UPDATE 03/28/2026*** After almost a month of no reply from my request for re-verification. I found the companies security teams Email and sent them a message about the finding. They replied with thanks and informed me that while I was correct about the mishandling of my report on the bounty program side, this particular finding was previously identified by one of their researchers and they chose to accept the risk while they re-build their frontend structure.
+
 
 ## Synopsis
 During reconnaissance of a production Industrial IoT (IIoT) and Resource Management platform, a significant information disclosure was identified. A publicly accessible, unauthenticated JavaScript bundle was found to contain the complete compiled Protobuf API schema for the platform’s internal microservices.
@@ -20,10 +23,10 @@ This schema provided a granular roadmap of the internal application logic, inclu
 ## Researcher's Notes: The "Blueprints" Argument
 This finding highlights the critical distinction between Transport-layer security (how a user reaches a page) and Asset-layer exposure (what the page gives the user).
 
-While this was orignally classified as a "Low Risk" informative finding, serving an entire internal API schema to a client-side bundle is a fundamental architectural failure. In a high-stakes enterprise environment, this data is the technical equivalent of a "Blueprints" leak.  
+Serving an entire internal API schema to a client-side bundle is a fundamental architectural failure. In a high-stakes enterprise environment, this data is the technical equivalent of a "Blueprints" leak.  
 It allows an adversary to understand the internal workings of the system with near-perfect clarity before ever attempting an exploit.
 
-And in this case it's still a vulnerability I'm pressing to the company, so the current severity or triage results may change.
+
 
 ## Tactical Impact & "The Map"
 The leaked schema (spanning over 2,300 lines of definitions) enumerated several critical capabilities:
@@ -80,10 +83,7 @@ In modern web architecture, what you send to the client stays with the client. F
 
 When you provide the map, you eliminate the attacker's need for discovery.
 
-The "Duplicate" Logic
-In this case, the organization handles assets of extreme value. It is baffling to classify this as a duplicate when the report it allegedly duplicates merely notes that an endpoint is available. One concerns access; the other concerns intelligence.
-
-I don't make the rules, I just find ways to break them. This case is still under review.  
+I don't make the rules, I just find ways to break them.  
 **Don't hand the bad guys the map.**
 
 ## Disclaimer
