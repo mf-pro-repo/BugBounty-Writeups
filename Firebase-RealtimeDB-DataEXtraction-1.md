@@ -1,5 +1,6 @@
 # Cloud Database Misconfiguration: Spatial Telemetry Leak
 Vulnerability: Unauthenticated Firebase Realtime Database Read
+
 Target: Confidential (AR/XR Infrastructure)
 
 Status: Closed / Sanitized
@@ -9,12 +10,13 @@ Classification: CWE-284 (Improper Access Control)
 Triage Result: Duplicate
 
 ## Synopsis
-During a targeted reconnaissance of an organization’s Augmented Reality (AR) and Extended Reality (XR) infrastructure, a critical security misconfiguration was identified in the backend cloud database instances.
+During a targeted reconnaissance of an organization’s Augmented Reality (AR) and Extended Reality (XR) infrastructure, a security misconfiguration was identified in the backend cloud database instances.
 
 Several production subdomains were found to be utilizing Firebase Realtime Databases with permissive security rules (".read": true).  
-This allowed any unauthenticated actor to extract the entire database tree—including internal project identifiers, infrastructure metadata, and sensitive spatial telemetry—via a simple REST API call.
+This allowed any unauthenticated actor to extract the entire database tree, including internal project identifiers, infrastructure metadata, and sensitive spatial telemetry, via a simple REST API call.
 
-## Researcher's Notes: Beyond "Informational"
+## Researcher's Notes:
+
 While the organization correctly restricted write access (preventing data tampering), the read exposure on an AR/XR platform is significant.
 
 In a standard web app, a leaked database might just be user IDs. In an AR/XR environment, the database contains the digital twin of the physical world. This includes coordinate systems, rotation data (Quaternions), and project-specific "anchors."
@@ -86,16 +88,16 @@ This confirmed the issue was strictly an Information Disclosure (Read) rather th
 
 This finding was identified as a duplicate, but with confirmation that it was identified as a valid security issue so I count this one as a win.
 
-A common misconception among developers is that a Firebase apiKey acts as a secret. In reality, Firebase API keys are identifiers, not authorizers.  
+A misconception among some is that a Firebase apiKey acts as a secret. In reality, Firebase API keys are identifiers, not authorizers.  
 Their purpose is to tell the Firebase SDK which project to talk to, not to prove the user has permission to see the data.
 This finding proves that relying on "Security through Obscurity" (hiding the URL in a JS bundle) is not a substitute for robust Firebase Security Rules.
 
 Not every API key is "OMG I FOUND A SECRET REPORT IT" In fact, MOST are public keys or organizational identifiers. Check your work and verify verify verify...
 
-This finding also highlights the importance of manual review and rreinforces why FoxHunt is built on a "Hybrid" model. 
+This finding also highlights the importance of manual review and reinforces why FoxHunt is built on a "Hybrid" model. 
 While automation (Grep/Pattern Matching) was used to find the haystack (the API keys), it took manual analysis to identify the needle (the unauthenticated .json REST exploit).
 
-Bottom Line: If your cloud database doesn't require a token to read the root node, you aren't just hosting data—you're broadcasting it.
+Bottom Line: If your cloud database doesn't require a token to read the root node, you aren't just hosting data, you're broadcasting it.
 
 ## Disclaimer
 This write-up has been strictly sanitized to remove all proprietary identifiers, including hostnames and project-specific namespaces.  
