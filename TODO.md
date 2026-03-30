@@ -6,6 +6,8 @@
 
 2: Finally upload screenshots. - 03/30/26
 
+3: Folders for months/years. - 03/30/26
+
 ## **REMOVE**
 None (yet)
 
