@@ -20,7 +20,7 @@ During reconnaissance of a production Industrial IoT (IIoT) and Resource Managem
 
 This schema provided a granular roadmap of the internal application logic, including RPC methods and message structures for device telemetry, hardware control, authentication flows, and data classification handlers.  
 
-## Researcher's Notes: The "Blueprints" Argument
+## Researcher's Notes
 This finding highlights the critical distinction between Transport-layer security (how a user reaches a page) and Asset-layer exposure (what the page gives the user).
 
 Serving an entire internal API schema to a client-side bundle is a fundamental architectural failure. In a high-stakes enterprise environment, this data is the technical equivalent of a "Blueprints" leak.  
@@ -28,7 +28,7 @@ It allows an adversary to understand the internal workings of the system with ne
 
 
 
-## Tactical Impact & "The Map"
+## Tactical Impact
 The leaked schema (spanning over 2,300 lines of definitions) enumerated several critical capabilities:
 
   **Hardware Control:** API structures for device state management, telemetry frequency, and remote command execution.
@@ -83,7 +83,6 @@ In modern web architecture, what you send to the client stays with the client. F
 
 When you provide the map, you eliminate the attacker's need for discovery.
 
-I don't make the rules, I just find ways to break them.  
 **Don't hand the bad guys the map.**
 
 ## Disclaimer
