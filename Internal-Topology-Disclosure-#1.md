@@ -35,7 +35,9 @@ During basic recon of the target, subfinder found a series of domains. Doing my 
 This is when I discovered they were private IP addresses and were linked to various services throughout the company. This then became my attack vector.
 
 The identification of these assets was performed using passive DNS aggregation followed by a filtered resolution check against public name servers.  
+
   **1. Subdomain Aggregation:** Passive sources (Censys, crt.sh, and Subfinder) were used to generate a candidate list.  
+  
   **2. Filtered Resolution:** The following logic was applied to flag hostnames resolving to RFC 1918 space  
 
 ```bash
@@ -56,11 +58,11 @@ I was able to determine their prod subnet at 10.36.XXX.XXX and their training su
 I even found one of their internal services was also mapped to an external IP and was publically accessable from anywhere on the internet. (Auth gated)  
 
 Mapped Infrastructure Includes:  
-  **Security Tooling:** Internal Portswigger platform (Security Team infrastructure exposed).
+  **Security Tooling:** Internal Portswigger platform.
 
   **Development & CI/CD:** TeamCity, GitHub Service, NIX Service.
 
-  **Core Business Logic:** Machine Learning Services, Simulation Services, Mapping/Geo-services.
+  **Core Business Logic:** Machine Learning Services, Simulation Services, Mapping/Geo services.
 
   **Ops & Documentation:** JIRA, various Metrics/Telemetry services.
 
@@ -69,12 +71,14 @@ Mapped Infrastructure Includes:
 (Insert screenshots here when I upload them)  
 
 ## Suggested Actions:  
+
   **Split-Horizon DNS:** Host internal records on internal-only name servers.  
+  
   **DNS Sanitization:** Audit public DNS zones to ensure no RFC 1918 addresses are leaked during infrastructure-as-code deployments.  
 
 ## Takeaways  
 
-The core lesson here is that visibility is a vulnerability. Externally discoverable internal IPs act as a force multiplier for an adversary.  
+The core lesson here is that visibility can be a vulnerability. Externally discoverable internal IPs act as a force multiplier for an adversary.  
 In a typical breach, the "Network Discovery" phase is where the attacker is most vulnerable to detection; it is the point where an IDS (Intrusion Detection System) identifies anomalous scanning or lateral movement attempts.
 
 By providing a map of your infrastructure via public DNS:
